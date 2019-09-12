@@ -51,4 +51,3 @@ int main (){
                 cout << "A = " << static_cast<int>(z.x) << ", B = " << static_cast<int>(z.y) << endl;
     return 0;
 }
-
