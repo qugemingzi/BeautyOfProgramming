@@ -5,7 +5,7 @@
 using namespace std;
 //***************************************************************/
 //
-// ÀÓ±ıÅÅĞòÊµÏÖ
+// çƒ™é¥¼æ’åºå®ç°
 //
 //***************************************************************/
 class prefixSorting{
@@ -31,10 +31,10 @@ public:
     }
 
     //
-    // ¼ÆËãÀÓ±ı·­×ªĞÅÏ¢
+    // è®¡ç®—çƒ™é¥¼ç¿»è½¬ä¿¡æ¯
     // @param
-    // pCakeArray   ´æ´¢ÀÓ±ıË÷ÒıÊı×é
-    // n_CakeCnt    ÀÓ±ı¸öÊı
+    // pCakeArray   å­˜å‚¨çƒ™é¥¼ç´¢å¼•æ•°ç»„
+    // n_CakeCnt    çƒ™é¥¼ä¸ªæ•°
     //
     void Run(int* pCakeArray, int nCakeCnt){
         Init(pCakeArray, nCakeCnt);
@@ -45,7 +45,7 @@ public:
     }
 
     //
-    // Êä³öÀÓ±ı½»»»¹ı³Ì
+    // è¾“å‡ºçƒ™é¥¼äº¤æ¢è¿‡ç¨‹
     //
     void CakeOutput(){
         int i, j, k, t;
@@ -63,7 +63,7 @@ public:
     }
 
     //
-    // Êä³öÀÓ±ı¾ßÌå·­×ªµÄ´ÎÊı
+    // è¾“å‡ºçƒ™é¥¼å…·ä½“ç¿»è½¬çš„æ¬¡æ•°
     //
     void Output(){
         for(int i = 0; i < m_nMaxSwap; i++){
@@ -78,10 +78,10 @@ public:
 private:
 
     //
-    // ³õÊ¼»¯Êı×éĞÅÏ¢
+    // åˆå§‹åŒ–æ•°ç»„ä¿¡æ¯
     // @param
-    // pCakeArray   ´æ´¢ÀÓ±ıË÷ÒıÊı×é
-    // nCakeCnt     ÀÓ±ı¸öÊı
+    // pCakeArray   å­˜å‚¨çƒ™é¥¼ç´¢å¼•æ•°ç»„
+    // nCakeCnt     çƒ™é¥¼ä¸ªæ•°
     //
     void Init(int* pCakeArray, int nCakeCnt){
         assert(pCakeArray != NULL);
@@ -89,21 +89,21 @@ private:
 
         m_nCakeCnt = nCakeCnt;
 
-        // ³õÊ¼»¯ÀÓ±ıÊı×é
+        // åˆå§‹åŒ–çƒ™é¥¼æ•°ç»„
         m_CakeArray = new int[m_nCakeCnt];
         assert(m_CakeArray != NULL);
         for(int i = 0; i < m_nCakeCnt; i++){
             m_CakeArray[i] = pCakeArray[i];
         }
 
-        // ÉèÖÃ×î¶à½»»»´ÎÊıĞÅÏ¢
+        // è®¾ç½®æœ€å¤šäº¤æ¢æ¬¡æ•°ä¿¡æ¯
         m_nMaxSwap = UpperBound(m_nCakeCnt);
 
-        // ³õÊ¼»¯½»»»½á¹ûÊı×é
+        // åˆå§‹åŒ–äº¤æ¢ç»“æœæ•°ç»„
         m_SwapArray = new int[m_nMaxSwap + 1];
         assert(m_SwapArray != NULL);
 
-        // ³õÊ¼»¯ÖĞ¼ä½»»»½á¹ûĞÅÏ¢
+        // åˆå§‹åŒ–ä¸­é—´äº¤æ¢ç»“æœä¿¡æ¯
         m_ReverseCakeArray = new int[m_nCakeCnt];
         for(int i = 0; i < m_nCakeCnt; i++){
             m_ReverseCakeArray[i] = m_CakeArray[i];
@@ -112,22 +112,22 @@ private:
     }
 
     //
-    // Ñ°ÕÒµ±Ç°·­×ªµÄÉÏ½ç
+    // å¯»æ‰¾å½“å‰ç¿»è½¬çš„ä¸Šç•Œ
     //
     int UpperBound(int nCakeCnt){
-        // ÓÉ n*2 ±ä³É n*2-3 £¬¿¼ÂÇÇ° n-2 ¸ö£¬Ö®ºóÔÚ·­×ªÒ»´Î¼´¿É£¬ÉÏ½ç¼õĞ¡
+        // ç”± n*2 å˜æˆ n*2-3 ï¼Œè€ƒè™‘å‰ n-2 ä¸ªï¼Œä¹‹ååœ¨ç¿»è½¬ä¸€æ¬¡å³å¯ï¼Œä¸Šç•Œå‡å°
         return nCakeCnt * 2 - 3;
     }
 
     //
-    // Ñ°ÕÒµ±Ç°·­×ªµÄÏÂ½ç
+    // å¯»æ‰¾å½“å‰ç¿»è½¬çš„ä¸‹ç•Œ
     //
     int LowerBound(int* pCakeArray, int nCakeCnt){
         int t, ret = 0;
 
-        // ¸ù¾İµ±Ç°Êı×éµÄÅÅĞòĞÅÏ¢Çé¿öÀ´ÅĞ¶Ï×îÉÙĞèÒª½»»»¶àÉÙ´Î
+        // æ ¹æ®å½“å‰æ•°ç»„çš„æ’åºä¿¡æ¯æƒ…å†µæ¥åˆ¤æ–­æœ€å°‘éœ€è¦äº¤æ¢å¤šå°‘æ¬¡
         for(int i = 1; i < nCakeCnt; i++){
-            // ÅĞ¶ÏÎ»ÖÃÏàÁÚµÄÁ½¸öÀÓ±ı£¬ÊÇ·ñÎª³ß´çÅÅĞòÉÏÏàÁÚµÄ
+            // åˆ¤æ–­ä½ç½®ç›¸é‚»çš„ä¸¤ä¸ªçƒ™é¥¼ï¼Œæ˜¯å¦ä¸ºå°ºå¯¸æ’åºä¸Šç›¸é‚»çš„
             t = pCakeArray[i] - pCakeArray[i - 1];
             if((t == 1) || (t == -1)){
 
@@ -136,28 +136,28 @@ private:
             }
         }
         if(pCakeArray[nCakeCnt - 1] != nCakeCnt - 1){
-            // ¿¼ÂÇ×îºóÒ»Î»£¬Èô²»Îª×î´óµÄ£¬»¹ĞèÒ»´Î·­×ª£¬ÏÂ½çÔö¼Ó
+            // è€ƒè™‘æœ€åä¸€ä½ï¼Œè‹¥ä¸ä¸ºæœ€å¤§çš„ï¼Œè¿˜éœ€ä¸€æ¬¡ç¿»è½¬ï¼Œä¸‹ç•Œå¢åŠ 
             ret++;
         }
         return ret;
     }
 
     //
-    // ÅÅĞòµÄÖ÷º¯Êı
+    // æ’åºçš„ä¸»å‡½æ•°
     //
     void Search(int step){
         int i, nEstimate;
 
         m_nSearch++;
 
-        // ¹ÀËãÕâ´ÎËÑË÷ËùĞèÒªµÄ×îĞ¡½»»»´ÎÊı
+        // ä¼°ç®—è¿™æ¬¡æœç´¢æ‰€éœ€è¦çš„æœ€å°äº¤æ¢æ¬¡æ•°
         nEstimate = LowerBound(m_ReverseCakeArray, m_nCakeCnt);
         if(step + nEstimate >= m_nMaxSwap){
-            // È¡µÈÊ±Ò²¿É¼ôÖ¦
+            // å–ç­‰æ—¶ä¹Ÿå¯å‰ªæ
             return;
         }
 
-        // Èç¹ûÒÑ¾­ÅÅºÃĞò£¬¼´·­×ªÍê³É£¬Êä³ö½á¹û
+        // å¦‚æœå·²ç»æ’å¥½åºï¼Œå³ç¿»è½¬å®Œæˆï¼Œè¾“å‡ºç»“æœ
         if(IsSorted(m_ReverseCakeArray, m_nCakeCnt)){
             if(step < m_nMaxSwap){
                 m_nMaxSwap = step;
@@ -168,7 +168,7 @@ private:
             return;
         }
 
-        // µİ¹é½øĞĞ·­×ª
+        // é€’å½’è¿›è¡Œç¿»è½¬
         for(i = 1; i < m_nCakeCnt; i++){
             Reverse(0, i);
             m_ReverseCakeArraySwap[step] = i;
@@ -178,8 +178,8 @@ private:
     }
 
     //
-    // true : ÒÑ¾­ÅÅºÃĞò
-    // false : Î´ÅÅĞò
+    // true : å·²ç»æ’å¥½åº
+    // false : æœªæ’åº
     //
     bool IsSorted(int* pCakeArray, int nCakeCnt){
         for(int i = 1; i < nCakeCnt; i++){
@@ -191,13 +191,13 @@ private:
     }
 
     //
-    // ·­×ªÀÓ±ıĞÅÏ¢
+    // ç¿»è½¬çƒ™é¥¼ä¿¡æ¯
     //
     void Reverse(int nBegin, int nEnd){
         assert(nEnd > nBegin);
         int i, j, t;
 
-        // ·­×ªÀÓ±ıĞÅÏ¢
+        // ç¿»è½¬çƒ™é¥¼ä¿¡æ¯
         for(i = nBegin, j = nEnd; i < j; i++, j--){
             t = m_ReverseCakeArray[i];
             m_ReverseCakeArray[i] = m_ReverseCakeArray[j];
@@ -207,14 +207,14 @@ private:
 
 
 private:
-    int* m_CakeArray;   // ÀÓ±ıĞÅÏ¢Êı×é
-    int m_nCakeCnt;     // ÀÓ±ı¸öÊı
-    int m_nMaxSwap;     // ×î¶à½»»»´ÎÊı£¬×î¶àÎªm_nCakeCnt*2
-    int* m_SwapArray;   // ½»»»½á¹ûÊı×é
+    int* m_CakeArray;   // çƒ™é¥¼ä¿¡æ¯æ•°ç»„
+    int m_nCakeCnt;     // çƒ™é¥¼ä¸ªæ•°
+    int m_nMaxSwap;     // æœ€å¤šäº¤æ¢æ¬¡æ•°ï¼Œæœ€å¤šä¸ºm_nCakeCnt*2
+    int* m_SwapArray;   // äº¤æ¢ç»“æœæ•°ç»„
 
-    int* m_ReverseCakeArray;    // µ±Ç°·­×ªÀÓ±ıĞÅÏ¢Êı×é
-    int* m_ReverseCakeArraySwap;// µ±Ç°·­×ªÀÓ±ı½»»»½á¹ûÊı×é
-    int m_nSearch;              // µ±Ç°ËÑË÷´ÎÊıĞÅÏ¢
+    int* m_ReverseCakeArray;    // å½“å‰ç¿»è½¬çƒ™é¥¼ä¿¡æ¯æ•°ç»„
+    int* m_ReverseCakeArraySwap;// å½“å‰ç¿»è½¬çƒ™é¥¼äº¤æ¢ç»“æœæ•°ç»„
+    int m_nSearch;              // å½“å‰æœç´¢æ¬¡æ•°ä¿¡æ¯
 
 };
 
@@ -226,5 +226,4 @@ int main(){
     pS->Output();
     return 0;
 }
-
 
