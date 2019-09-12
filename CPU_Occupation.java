@@ -5,7 +5,7 @@ public class CPU_Occupation {
     public static void main(String[] args) throws InterruptedException{
 //        occup_1();// 解法1，有点问题
 //        occup_2();// 解法2，单核可以，多核不可以
-        Runtime r = Runtime.getRuntime();//获得当前系统的CPU数量，根据这个数值创建对应数量的线程
+        Runtime r = Runtime.getRuntime();// 获得当前系统的CPU数量，根据这个数值创建对应数量的线程
         ExecutorService pool = Executors.newFixedThreadPool(r.availableProcessors());
         for(int i = 0; i < r.availableProcessors(); i++){
 //            pool.execute(new occup_3());// 解法3，多核可以
