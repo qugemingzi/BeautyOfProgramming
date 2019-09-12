@@ -41,7 +41,7 @@ public class Chess {
     }
 
     public static void method_2(){
-        // Method 2
+        // Method 2 
         System.out.println("Method 2: ");
         char i = 81;
         while(--i > 0){
