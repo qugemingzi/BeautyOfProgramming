@@ -78,8 +78,8 @@ public class Elevator {
     public static void main(String []args){
         System.out.println("请输入电梯层数：");
         Scanner scan = new Scanner(System.in);
-        int N = scan.nextInt();
-        System.out.println("请输入每层电梯人数：");
+        int N = scan.nextInt(); // 10
+        System.out.println("请输入每层电梯人数："); // 2层-1人,10层-3人
         int []nPerson = new int[N + 1];
         for(int i = 1; i <= N; i++){
             nPerson[i] = scan.nextInt();
