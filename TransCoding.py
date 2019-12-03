@@ -19,7 +19,7 @@ dp[i] = { 1                 i>=len-1
 def transcoding(i):
     if dp[i] != 0:
         return dp[i]
-    if i >= len(str) - 1:
+    if （i == len(str) - 1 and int(str[i]) != 0) or i > len(str) - 1:
         dp[i] = 1
     elif 3 <= int(str[i]) <= 9:
         dp[i] = transcoding(i + 1)
