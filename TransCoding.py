@@ -4,7 +4,7 @@
 给定一个只包含数字的非空字符串，计算解码方法总数
 示例："12" -> 1 2(AB) or 12(L)，输出2
 思路：动态规划
-dp[i] = { 1                 i>=len-1
+dp[i] = { 1                 i>len-1 or (i==len-1 and str[i]!=0)
           dp[i+1]           str[i]=3...9
           dp[i+2]           str[i]=1 && str[i+1]=0
           dp[i+1]+dp[i+2]   str[i]=1 && str[i+1]!=0
