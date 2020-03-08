@@ -138,4 +138,21 @@ public class NIM_3 {
     public static void main(String []args){
         System.out.println(nim_1(16, 26) + ", " + nim_2(16, 26));
     }
+    /*
+        extension:
+        1）如何得到必胜策略呢？即游戏过程
+            我们只考虑先取者必胜的情况，一般如(n, m) (n < m)。策略为将安全局面变为不安全局面
+            if n in an:
+                m > bn: m -> bn
+                m < bn: n -> a(m-n), m -> b(m-n)
+            else n not in an, n in bn:
+                m -> an
+        2）NIM_4 两个玩家一堆石头，两人依次拿，最后拿光者赢，规则如下：
+            第一个玩家不可以拿光全部的石头
+            第一次拿完石头后，每人每次最多只能拿掉对方前一次所拿石头的两倍
+           该游戏有无必胜的算法？(Hint: Fibonacci)
+            结论：Fibonacci 数，先手败；非 Fibonacci 数，先手胜。
+            
+
+     */
 }
