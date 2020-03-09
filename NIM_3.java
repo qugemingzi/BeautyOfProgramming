@@ -148,13 +148,11 @@ public class NIM_3 {
             b - a = 1
         可得：
             a = (1 + sqrt(5)) / 2
-            b = (3 + sqrt(5)) / 2
-                                                                                    证毕
+            b = (3 + sqrt(5)) / 2                                                   证毕
      */
     static boolean nim_2(int n, int m){
-        double a, b;
+        double a;
         a = (1 + Math.sqrt(5)) / 2;
-        b = a + 1;
         if(n == m)
             return true;
         if(n > m) {
@@ -162,6 +160,7 @@ public class NIM_3 {
             n = m;
             m = t;
         }
+        // 若 <n, m> 为不安全局面，则 a(m-n) = n, b(m-n) = m
         return (n != (int)((m-n)*a));
     }
 
