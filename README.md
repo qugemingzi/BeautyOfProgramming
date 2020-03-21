@@ -1,2 +1,2 @@
 # BeautyOfProgramming
-&lt;Beauty Of Programming>
+<Beauty Of Programming> && some algorithms for interesting problems 
