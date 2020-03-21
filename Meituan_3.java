@@ -2,6 +2,25 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Meituan_3 {
+    /*
+        任务最大得分
+        n 个任务，每个任务有 k 个子任务，第 i 个子任务花费时间为 ti。认为 n 个人物的第 i 个子任务需要的时间一样。
+        每个任务、子任务都只能完成一次，任何任务不可重复完成。完成一个子任务得分 p，完成一个任务的子任务得额外的
+        q 分，也就是会获得 pk+q 分。现共有 m 的时间，求最大的得分。
+        INPUT :
+            三整数 n, k, m [1, 100] [1, 100] [0, 2e9]
+            俩整数 p, q [1, 100] [1, 100]
+            k 整数表示每个子任务需要的时间
+        OUTPUT :
+            m 时间内最大得分
+        example :
+            IN : 3 2 8      2 2 3
+                 3 1        1 2
+                 9 5        1 1
+            OUT: 3          5
+        idea : 遍历共可完成几个任务，剩下的时间按时间升序完成子任务，时间复杂度O(n*k)。
+     */
+
     public static void main(String args[]) {
         Scanner scan = new Scanner(System.in);
         int n = scan.nextInt(),
