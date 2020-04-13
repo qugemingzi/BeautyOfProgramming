@@ -1,5 +1,7 @@
 package algorithm;
 
+import java.util.Arrays;
+
 /**
  * @author pray chow
  * 0-1背包变体 LeetCode 416
@@ -75,11 +77,49 @@ public class Package01X {
         return dp[sum];
     }
 
+    /**
+     * 递归实现
+     * @param nums 数组
+     * @return 能否等分
+     */
+    public boolean canPartition_3(int[] nums) {
+        int sum = 0, n = nums.length;
+        for (int num : nums) {
+            sum += num;
+        }
+        if ((sum & 1) != 0) {
+            return false;
+        }
+        sum /= 2;
+        Arrays.sort(nums);
+        return dfs(0, 0, nums, sum, n - 1);
+    }
+
+    /**
+     * 递归函数
+     * @param cur1 分组一
+     * @param cur2 分组二
+     * @param nums 数组
+     * @param target 目标数
+     * @param index 数组下标
+     * @return 能否等分
+     */
+    private boolean dfs(int cur1, int cur2, int[] nums, int target, int index) {
+        if (cur1 > target || cur2 > target || index == -1) {
+            return false;
+        }
+        if (cur1 == target || cur2 == target) {
+            return true;
+        }
+        return dfs(cur1 + nums[index], cur2, nums, target, index - 1) ||
+                dfs(cur1, cur2 + nums[index], nums, target, index - 1);
+    }
+
     public static void main(String[] args) {
         Package01X package01X = new Package01X();
         int[] nums1 = {1, 5, 11, 5};
         int[] nums2 = {1, 2, 3, 8};
-        System.out.println(package01X.canPartition(nums1) + " " + package01X.canPartition_2(nums1));
-        System.out.println(package01X.canPartition(nums2) + " " + package01X.canPartition_2(nums2));
+        System.out.println(package01X.canPartition(nums1) + " " + package01X.canPartition_2(nums1) + " " + package01X.canPartition_3(nums1));
+        System.out.println(package01X.canPartition(nums2) + " " + package01X.canPartition_2(nums2) + " " + package01X.canPartition_3(nums2));
     }
 }
