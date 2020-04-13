@@ -17,18 +17,22 @@ package algorithm;
  *      dp[i][j] = dp[i - 1][j] || dp[i - 1][j - nums[i - 1]]
  *      dp[0][...] = false, dp[...][0] = true
  *      目标即为求 dp[N][sum/2]
+ *      上述空间复杂度为 O(N*sum)，压缩空间为 O(sum)
  */
 public class Package01X {
-
+    /**
+     * dp解决等分数组
+     * @param nums 数组
+     * @return 能否等分
+     */
     boolean canPartition(int[] nums) {
-        int sum = 0;
+        int sum = 0, n = nums.length;
         for (int num : nums) {
             sum += num;
         }
         if ((sum & 1) != 0) {
             return false;
         }
-        int n = nums.length;
         sum /= 2;
         boolean[][] dp = new boolean[n + 1][sum + 1];
         for (int i = 0; i <= n; ++i) {
@@ -44,11 +48,38 @@ public class Package01X {
         return dp[n][sum];
     }
 
+    /**
+     * 压缩二维数组为一维，需注意 j 要从 sum -> 0 避免元素重复利用
+     * @param nums 数组
+     * @return 能否等分
+     */
+    boolean canPartition_2(int[] nums) {
+        int sum = 0, n = nums.length;
+        for (int num : nums) {
+            sum += num;
+        }
+        if ((sum & 1) != 0) {
+            return false;
+        }
+        sum /= 2;
+        boolean[] dp = new boolean[sum + 1];
+        dp[0] = true;
+        for (int i = 0; i < n; ++i) {
+            for (int j = sum; j >= 0; --j) {
+                if (j >= nums[i]) {
+                    dp[j] = dp[j] || dp[j - nums[i]];
+                }
+            }
+        }
+
+        return dp[sum];
+    }
+
     public static void main(String[] args) {
         Package01X package01X = new Package01X();
         int[] nums1 = {1, 5, 11, 5};
         int[] nums2 = {1, 2, 3, 8};
-        System.out.println(package01X.canPartition(nums1));
-        System.out.println(package01X.canPartition(nums2));
+        System.out.println(package01X.canPartition(nums1) + " " + package01X.canPartition_2(nums1));
+        System.out.println(package01X.canPartition(nums2) + " " + package01X.canPartition_2(nums2));
     }
 }
