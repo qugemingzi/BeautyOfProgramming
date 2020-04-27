@@ -146,7 +146,6 @@ public class ClosePair {
         closePair.arrayList = new ArrayList<Point>();
         closePair.inputPoint();
         closePair.sortList();
-        closePair.sortList();
         closePair.printPoint();
         DoublePoint close = closePair.closePair(0, closePair.getPointNum() - 1);
         System.out.println("点 1 : (" + close.a.x + ", " + close.a.y + ")");
