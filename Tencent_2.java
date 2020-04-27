@@ -25,6 +25,7 @@ import java.util.Scanner;
  *      1.414
  *      0.000
  * 暴力，50%
+ * 分治法见 ClosePairX.java
  */
 public class Tencent_2 {
     public static void main(String[] args) {
