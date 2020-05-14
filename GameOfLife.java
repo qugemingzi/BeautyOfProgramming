@@ -2,6 +2,12 @@ package algorithm;
 
 /**
  * @author pray chow
+ * 康威生命游戏 LeetCode 289 最强大脑一期小题目-20200513
+ * 给定一个只有 0/1 组成的二维数组，1 <=> 细胞活，0 <=> 细胞死
+ * 规则为计算该细胞周边的 8 个细胞的存活数量 count
+ *      count < 2 || count > 3  环境太松/太挤，细胞死
+ *      count == 2              环境还可，细胞维持原状态
+ *      count == 3              环境最佳，细胞活
  */
 public class GameOfLife {
     int[] dx = {-1, -1, -1, 0, 0, 1, 1, 1};
